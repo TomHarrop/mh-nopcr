@@ -19,7 +19,6 @@ done < <(find . -path "*meraculous_final_results*" -name "final.scaffolds.fa" -p
 
 printf "Found fasta file\n"
 printf "\t%s\n" "${input_fa[@]}"
-exit 1
 other_output="output/assembly_statistics/statistics.txt"
 
 # make outdir
