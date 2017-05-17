@@ -9,15 +9,17 @@ source "src/sh/bash_header"
 source "src/sh/io_parser"
 
 # will pass input_fa and other_output from ruffus
-soap_files=()
+input_fa=()
 while IFS=  read -r -d $'\0'; do
-    soap_files+=("$REPLY")
+    input_fa+=("$REPLY")
 done < <(find . -name "assembly.scafSeq" -print0)
-meraculous_files=()
 while IFS=  read -r -d $'\0'; do
-    meraculous_files+=("$REPLY")
+    input_fa+=("$REPLY")
 done < <(find . -path "*meraculous_final_results*" -name "final.scaffolds.fa" -print0)
-input_fa=( "${soap_files[@]}" "${meraculous_files[@]}" )
+
+printf "Found fasta file\n"
+printf "\t%s\n" "${input_fa[@]}"
+exit 1
 other_output="output/assembly_statistics/statistics.txt"
 
 # make outdir
