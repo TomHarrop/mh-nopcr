@@ -4,10 +4,7 @@ library(data.table)
 library(ggplot2)
 
 # load and combine data
-thruplex_assembly_data_raw <- fread("data/thruplex_assembly_statistics.txt")
-nopcr_assembly_data_raw <- fread("output/assembly_statistics/statistics.txt")
-
-assembly_data_raw <- rbind(thruplex_assembly_data_raw, nopcr_assembly_data_raw)
+assembly_data_raw <- fread("output/assembly_statistics/statistics.txt")
 
 # parse algorithm
 assembly_data_raw[grep("assembly.scafSeq", basename(filename)),
